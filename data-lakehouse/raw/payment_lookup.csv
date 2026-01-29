@@ -1,0 +1,7 @@
+payment_type,payment_description,payment_method,transaction_fee_pct
+1,Credit Card,Electronic,0.03
+2,Cash,Physical,0.0
+3,No Charge,N/A,0.0
+4,Dispute,N/A,0.0
+5,Unknown,Unknown,0.0
+6,Voided trip,N/A,0.0

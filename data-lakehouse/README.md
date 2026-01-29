@@ -1,8 +1,10 @@
 # Data Lakehouse – Synthetic NYC Taxi Dataset
 
-## 📌 Overview
+## Overview
 This project contains a **synthetic NYC Taxi dataset** designed for **data analysis and Apache Spark / PySpark practice**.  
 The data mimics real NYC taxi trip records but **does not contain any real or sensitive information**.
+
+## DataSet 1 contain general data of taxi and customer.
 
 Column Name	   Data Type	Description
 vendor_id	   Integer	Taxi vendor identifier
@@ -19,3 +21,13 @@ tip_amount	   Double	Tip amount
 total_amount	   Double	Total charged amount
 payment_type	   Integer	Payment method code
 
+## DataSet 2 contain payment information/ways
+
+Column Name           Data Type   Description
+payment_type          Double      Type of payment
+payment_description   Double      Description of payment
+payment_method        Double      Mode of Payment
+transaction_fee_pct   Double      Fees on Transaction
+
+## Partition
+Data is partition on basis of pickup_datetime on day basis.
