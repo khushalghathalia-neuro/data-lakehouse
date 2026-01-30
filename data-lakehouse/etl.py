@@ -6,13 +6,11 @@ spark = SparkSession.builder.appName("Practice").getOrCreate()
 # Reading the raw CSV
 raw_df = spark.read.csv("/Users/khushalghathalia/Desktop/data-lakehouse/raw/synthetic_nyc_taxi.csv", header=True, inferSchema=True)
 
-# 1. Drop any rows with NA values
+# Drop any rows with NA values
 cleaned_df = raw_df.dropna()
-
-# Partitioning data
 silver_df = cleaned_df.withColumn("pickup_date", F.to_date("pickup_datetime"))
 
-# Writing Partition Data to Silver Folder
+# Writing Partition Data to Silver Folder & # Partitioning data
 silver_path = "/Users/khushalghathalia/Desktop/data-lakehouse/silver/trips"
 silver_df.write.mode("overwrite").partitionBy("pickup_date").parquet(silver_path)
 

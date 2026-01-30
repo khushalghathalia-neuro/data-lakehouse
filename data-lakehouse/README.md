@@ -31,3 +31,16 @@ transaction_fee_pct   Double      Fees on Transaction
 
 ## Partition
 Data is partition on basis of pickup_datetime on day basis.
+
+## Glue ETL Script
+glue_etl.py script is a Spark-based ETL pipeline designed to run as an AWS Glue job or locally. It processes raw taxi data into partitioned Silver and Gold layers.
+
+Argument	Required	Description
+--source	    Yes	        Path to the directory containing raw CSV files.
+--target	    Yes	        Base path for the Silver and Gold output directories.
+--run_date	    No	        The date to start processing. If omitted, the script reads from the bookmark file.
+
+## Bookmark
+The script utilizes a local file named last_processed_date.txt to track the last successful run date.
+Update Logic: The bookmark file is only updated at the end of the script execution.
+Failure Handling: If the job fails during processing, the bookmark remains at the previous value, ensuring no data is skipped on the next run.
